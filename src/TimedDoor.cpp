@@ -1,14 +1,13 @@
 // Copyright 2021 by Liza
 #include "TimedDoor.h"
 #include <iostream>
-#include <stdio.h>
-#include <time.h>
 #include <string>
+#include <time.h>
 DoorTimerAdapter::DoorTimerAdapter(TimedDoor& door_) : door(door_) {
 this->door = door_;}
 void DoorTimerAdapter::Timeout() {
 door.DoorTimeOut();}
-TimedDoor::TimedDoor(int time_){
+TimedDoor::TimedDoor(int time_) {
 iTimeout = time_;
 opened = false;
 adapter = new DoorTimerAdapter(*this);}
