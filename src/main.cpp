@@ -1,11 +1,8 @@
-// Copyright 2021 GHA Test Team
+// Copyright 2021 by Liza
 #include "TimedDoor.h"
 #include <iostream>
-
 int main() {
-  TimedDoor tDoor(5);
-  tDoor.lock();
-  tDoor.unlock();
-
-  return 0;
-}
+TimedDoor Door(5);
+Door.lock();
+Door.unlock();
+return 0;}
