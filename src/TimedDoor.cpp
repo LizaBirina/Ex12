@@ -1,13 +1,17 @@
 // Copyright 2021 by Liza
 #include "TimedDoor.h"
 #include <iostream>
+#include <stdio.h>
+#include <time.h>
 #include <string>
 DoorTimerAdapter::DoorTimerAdapter(TimedDoor& door_) : door(door_) {
 this->door = door_;}
 void DoorTimerAdapter::Timeout() {
 door.DoorTimeOut();}
-TimedDoor::TimedDoor(int time_) : opened(false),
-adapter(new DoorTimerAdapter(*this)), time(time_) {}
+TimedDoor::TimedDoor(int time_){
+iTimeout = time_;
+opened = false;
+adapter = new DoorTimerAdapter(*this);}
 bool TimedDoor::isDoorOpened() {
 return opened;}
 void TimedDoor::unlock() {
@@ -22,11 +26,11 @@ if (opened) {
 throw std::string("the door is opened!");}
 else
 {throw std::string("the door is closed!");}}
-void Timer::sleep(int Timeout) {
+void Timer::sleep(int iTimeout) {
 time_t start = time(nullptr);
-while (time(nullptr) - start < Timeout) {
+while (time(nullptr) - start < iTimeout) {
 continue;}}
-void Timer::tregister(int Timeout, TimerClient* tclient) {
+void Timer::tregister(int iTimeout, TimerClient* tclient) {
 this->client = tclient;
-sleep(Timeout);
+sleep(iTimeout);
 tclient->Timeout();}
